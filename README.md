@@ -26,9 +26,9 @@ Since all deps are here, to install the toolbox, simply run the `install.sh` scr
 
 - aider
 
-AI assistant to streamline productivity
+Stock aider, it's an AI assistant to streamline productivity.
 
 - nvim
 
-NvChad build for basic editing.
+NvChad build for some basic editing.
 
