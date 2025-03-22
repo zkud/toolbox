@@ -24,10 +24,12 @@ cp -r "$(pwd)" "$HOME/.toolbox"
 if [ -f "$HOME/.bashrc" ]; then
  echo "Adding nvim-rust alias to .bashrc..."
  echo "alias nvim-rust='~/.toolbox/nvim/rust/run.sh'" >> "$HOME/.bashrc"
+ echo "Adding aider alias to .bashrc..."
  echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 else
  echo "Creating .bashrc and adding nvim-rust alias..."
  echo "alias nvim-rust='~/.toolbox/nvim/rust/run.sh'" > "$HOME/.bashrc"
+ echo "Creating .bashrc and adding aider alias..."
  echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 fi
 
