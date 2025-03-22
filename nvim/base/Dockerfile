@@ -12,7 +12,3 @@ RUN adduser -D -u ${USER_ID} -G ${GROUP_NAME} ${USER_NAME}
 RUN apk add git nodejs neovim ripgrep build-base wget --update
 RUN cd /home/${USER_NAME}/ && git clone https://github.com/NvChad/starter .config/nvim
 RUN cd /home/${USER_NAME} && chown ${USER_NAME} -R .
-
-WORKDIR /app
-CMD [ "nvim" ]
-USER ${USER_NAME}
