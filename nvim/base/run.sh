@@ -19,7 +19,8 @@ docker build --pull -t $IMAGE_NAME \
 # Run the Docker container, mounting the current user's directory
 USER=zkud
 docker run --volume $(pwd):/app \
-   --user $USER \
-   -w /app \
-   --rm \
-   -it $IMAGE_NAME sh -uelic "nvim $@"
+  --volume ~/.toolbox/nvim/base/config:/home/$USER/.config/nvim \
+  --user $USER \
+  -w /app \
+  --rm \
+  -it $IMAGE_NAME sh -uelic "nvim $@"
