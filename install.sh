@@ -20,7 +20,7 @@ fi
 echo "Copying toolbox files to ~/.toolbox..."
 cp -r "$(pwd)" "$HOME/.toolbox"
 
-# Add nvim-rust command to .bashrc
+# Add commands to .bashrc
 if [ -f "$HOME/.bashrc" ]; then
  echo "Adding nvim-rust alias to .bashrc..."
  echo "alias nvim-rust='~/.toolbox/nvim/rust/run.sh'" >> "$HOME/.bashrc"
