@@ -12,11 +12,11 @@ fi
 
 # Build the Docker image, pulling updates if available
 docker build --pull -t $IMAGE_NAME \
-    --build-arg USER_ID=$(id -u) \
-    --build-arg USER_GROUP_ID=$(id -g) \
-    ~/.toolbox/nvim/base/ 
+   --build-arg USER_ID=$(id -u) \
+   --build-arg USER_GROUP_ID=$(id -g) \
+   ~/.toolbox/nvim/base/ 
 
 # Run the Docker container, mounting the current user's home directory
 docker run -it \
-    --volume $(pwd):/app \
-    $IMAGE_NAME
+   --volume $(pwd):/app \
+   $IMAGE_NAME "$@"
