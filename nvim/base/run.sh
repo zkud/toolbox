@@ -12,14 +12,16 @@ fi
 
 # Build the Docker image, pulling updates if available
 docker build --pull -t $IMAGE_NAME \
-   --build-arg USER_ID=$(id -u) \
-   --build-arg USER_GROUP_ID=$(id -g) \
-   ~/.toolbox/nvim/base/ 
+  --build-arg USER_ID=$(id -u) \
+  --build-arg USER_GROUP_ID=$(id -g) \
+  ~/.toolbox/nvim/base/ 
 
 # Run the Docker container, mounting the current user's home directory
+# and the .ssh directory for git authentication
 USER=zkud
 docker run --volume $(pwd):/app \
-    --user $USER \
-    -w /app \
-    --rm \
-    -it $IMAGE_NAME sh -uelic "nvim $@"
+   --volume ~/.ssh:/root/.ssh \
+   --user $USER \
+   -w /app \
+   --rm \
+   -it $IMAGE_NAME sh -uelic "nvim $@"
