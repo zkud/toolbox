@@ -20,6 +20,8 @@ docker build --pull -t $IMAGE_NAME \
 USER=zkud
 docker run --volume $(pwd):/app \
   --volume ~/.toolbox/nvim/base/config:/home/$USER/.config/nvim \
+  --volume ~/.toolbox/nvim/base/state:/home/$USER/.local/state/nvim \
+  --volume ~/.toolbox/nvim/base/share:/home/$USER/.local/share/nvim \
   --user $USER \
   -w /app \
   --rm \
