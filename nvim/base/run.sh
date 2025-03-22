@@ -17,10 +17,8 @@ docker build --pull -t $IMAGE_NAME \
   ~/.toolbox/nvim/base/ 
 
 # Run the Docker container, mounting the current user's directory
-# and the .ssh directory for git authentication
 USER=zkud
 docker run --volume $(pwd):/app \
-   --volume ~/.ssh:/home/$USER/.ssh \
    --user $USER \
    -w /app \
    --rm \
