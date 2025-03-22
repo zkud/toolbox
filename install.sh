@@ -33,9 +33,5 @@ else
  echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 fi
 
-# Source the .bashrc file to apply the changes immediately
-echo "Applying changes to current shell..."
-source "$HOME/.bashrc"
-
 echo "Toolbox installed/upgraded successfully!"
 echo "Remember to open a new terminal or run 'source ~/.bashrc' to use the new command."
