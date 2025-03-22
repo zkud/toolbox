@@ -18,6 +18,5 @@ docker build --pull -t $IMAGE_NAME \
 
 # Run the Docker container, mounting the current user's home directory
 docker run -it \
-    --user $(id -u):$(id -g) \
     --volume $(pwd):/app \
     $IMAGE_NAME
