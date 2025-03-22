@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the Docker image name
-IMAGE_NAME="nvim-rust"
+IMAGE_NAME="nvim-base"
 
 # Check if the image exists
 if docker images | grep -q "$IMAGE_NAME"; then
@@ -11,18 +11,10 @@ else
 fi
 
 # Build the Docker image, pulling updates if available
-docker build --pull -t $IMAGE_NAME .
-
-# Get the current user's ID
-USER_ID=$(id -u)
-
-# Get the current group's ID
-GROUP_ID=$(id -g)
+docker build --pull -t $IMAGE_NAME --build-arg USER_ID=$(id -u) USER_GROUP_ID=$(id -g) ~/.toolbox/nvim/base/ 
 
 # Run the Docker container, mounting the current user's home directory
 docker run -it \
- --rm \
- -v "$HOME:/home/$USER" \
- -e USER_ID=$USER_ID \
- -e GROUP_ID=$GROUP_ID \
- $IMAGE_NAME
+    --user $(id -u):$(id -g) \
+    --volume $(pwd):/app \
+    $IMAGE_NAME
