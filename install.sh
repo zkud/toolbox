@@ -18,7 +18,7 @@ fi
 
 # Copy the current directory to ~/.toolbox
 echo "Copying toolbox files to ~/.toolbox..."
-cp -r "$(pwd)" "$HOME/.toolbox"
+cp -r . "$HOME/.toolbox"
 
 # Add commands to .bashrc
 if [ -f "$HOME/.bashrc" ]; then
