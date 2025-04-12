@@ -26,9 +26,9 @@ Since all deps are here, to install the toolbox, simply run the `install.sh` scr
 
 - aider
 
-Stock aider, it's an AI assistant to streamline productivity.
+Basic aider with ollama configs, it's an AI assistant to streamline productivity.
 
 - nvim
 
-NvChad build for some basic editing. Configs, local states and etc. are mounted, so if you change some config you've tired of, there is no need to update the repo and reinstall.
+Dockerized NvChad build for some basic editing. 
 
