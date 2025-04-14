@@ -5,6 +5,6 @@
 docker build --pull -t $NVIM_BASE_IMAGE_NAME \
   --build-arg USER_NAME=$NVIM_BASE_USER_NAME \
   --build-arg GROUP_NAME=$NVIM_BASE_GROUP_NAME \
-  --build-arg USER_ID=$(id -u) \
-  --build-arg USER_GROUP_ID=$(id -g) \
+  --build-arg USER_ID=$NVIM_BASE_USER_ID \
+  --build-arg USER_GROUP_ID=$NVIM_BASE_GROUP_ID \
   ~/.toolbox/nvim/base/ 
