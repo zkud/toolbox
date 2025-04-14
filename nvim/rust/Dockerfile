@@ -1,3 +1,5 @@
 FROM toolbox-nvim-base
 
-RUN apk add --no-cache rust cargo
+RUN apk add rust cargo rustup
+RUN rustup component add clippy
+RUN rustup component add rustfmt
