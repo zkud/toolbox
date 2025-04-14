@@ -32,3 +32,6 @@ Basic aider with ollama configs, it's an AI assistant to streamline productivity
 
 Dockerized nvim + NvChad build for some basic editing. State is fully cached.
 
+- nvim-rust
+
+nvim + rust plugins build for some the rust development.
