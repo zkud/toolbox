@@ -1,10 +1,10 @@
 # zkud's toolbox
 
-This repository contains a collection of CLI tools for development, each tool is **fully dockerized, but still feels local**.
+This monorepo contains a collection of CLI tools for development, each tool is **fully dockerized, but still feels local**.
 
 ## Installation
 
-Currently Windows is not supported, as I don't use it for development at all.
+Currently Windows is **not** supported, as I don't use it for development at all.
 
 Dependencies:
 
@@ -30,5 +30,5 @@ Basic aider with ollama configs, it's an AI assistant to streamline productivity
 
 - nvim
 
-Dockerized NvChad build for some basic editing. 
+Dockerized nvim + NvChad build for some basic editing. State is fully cached.
 
