@@ -1,0 +1,3 @@
+readonly NVIM_BASE_IMAGE_NAME=nvim-base
+readonly NVIM_BASE_USER_NAME=zkud
+readonly NVIM_BASE_GROUP_NAME=chads

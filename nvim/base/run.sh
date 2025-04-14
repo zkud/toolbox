@@ -1,7 +1,9 @@
 #!/bin/bash
 
+. $HOME/.toolbox/nvim/constants.sh
+
 docker run --volume $(pwd):/app \
-  --user zkud \
+  --user $NVIM_BASE_USER_NAME \
   -w /app \
   --rm \
-  -it nvim-base sh -uelic "nvim $@"
+  -it $NVIM_BASE_IMAGE_NAME sh -uelic "nvim $@"

@@ -1,6 +1,10 @@
 #!/bin/bash
 
-docker build --pull -t nvim-base \
+. $HOME/.toolbox/nvim/constants.sh
+
+docker build --pull -t $NVIM_BASE_IMAGE_NAME \
+  --build-arg USER_NAME=$NVIM_BASE_USER_NAME \
+  --build-arg GROUP_NAME=$NVIM_BASE_GROUP_NAME \
   --build-arg USER_ID=$(id -u) \
   --build-arg USER_GROUP_ID=$(id -g) \
   ~/.toolbox/nvim/base/ 
