@@ -1,4 +1,5 @@
 readonly NVIM_BASE_IMAGE_NAME="toolbox-nvim-base"
+readonly NVIM_BASE2_IMAGE_NAME="toolbox-nvim-base2"
 readonly NVIM_BASE_USER_NAME=zkud
 readonly NVIM_BASE_GROUP_NAME=chads
 readonly NVIM_BASE_USER_ID=$(id -u) # Current User's ID
