@@ -18,7 +18,6 @@ cp -r . "$HOME/.toolbox"
 
 echo "Installing scripts"
 sh "$HOME/.toolbox/nvim/base/install.sh"
-sh "$HOME/.toolbox/nvim/base2/install.sh"
 sh "$HOME/.toolbox/nvim/rust/install.sh"
 
 if [ -f "$HOME/.bashrc" ]; then
@@ -28,8 +27,6 @@ else
  echo "Creating .bashrc and adding nvim alias..."
  echo "alias nvim='~/.toolbox/nvim/base/run.sh'" > "$HOME/.bashrc"
 fi
-echo "Adding nvim2 alias to .bashrc..."
-echo "alias nvim2='~/.toolbox/nvim/base2/run.sh'" >> "$HOME/.bashrc"
 echo "Adding nvim-rust alias to .bashrc..."
 echo "alias nvim-rust='~/.toolbox/nvim/rust/run.sh'" >> "$HOME/.bashrc"
 echo "Adding aider alias to .bashrc..."
