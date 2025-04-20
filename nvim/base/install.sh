@@ -2,7 +2,7 @@
 
 . $HOME/.toolbox/nvim/constants.sh
 
-docker build -t $NVIM_BASE_IMAGE_NAME \
+docker build --pull -t $NVIM_BASE_IMAGE_NAME \
   --build-arg USER_NAME=$NVIM_BASE_USER_NAME \
   --build-arg GROUP_NAME=$NVIM_BASE_GROUP_NAME \
   --build-arg USER_ID=$NVIM_BASE_USER_ID \

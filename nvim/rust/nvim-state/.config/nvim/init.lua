@@ -218,15 +218,28 @@ require("lazy").setup({
 
 	-- LSP Plugins
 	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
+		config = function()
+			require("mason").setup({})
+			local servers = {
+				"rust-analyzer",
+				"lua-language-server",
+				"stylua",
+			}
+			require("mason-tool-installer").setup({ ensure_installed = servers })
+		end,
+	},
+
+	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			-- Mason must be loaded before its dependents so we need to set it up here.
-			-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-			{ "williamboman/mason.nvim", opts = {} },
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"williamboman/mason.nvim",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -234,7 +247,22 @@ require("lazy").setup({
 			-- Allows extra capabilities provided by blink.cmp
 			"saghen/blink.cmp",
 		},
-		config = function()
+		opts = {
+			servers = {
+				lua_ls = {},
+				stylua = {},
+				rust_analyzer = {},
+			},
+		},
+		config = function(_, opts)
+			local lspconfig = require("lspconfig")
+			for server, config in pairs(opts.servers) do
+				-- passing config.capabilities to blink.cmp merges with the capabilities in your
+				-- `opts[server].capabilities, if you've defined it
+				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+
 			--  This function gets run when an LSP attaches to a particular buffer.
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -379,57 +407,47 @@ require("lazy").setup({
 					end,
 				},
 			})
-
-			-- LSP servers and clients are able to communicate to each other what features they support.
-			--  By default, Neovim doesn't support everything that is in the LSP specification.
-			--  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
-			--  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-			local servers = {
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
-				--
-				lua_ls = {},
-				stylua = {},
-			}
-
-			-- Ensure the servers and tools above are installed
-			--
-			-- To check the current status of installed tools and/or manually install
-			-- other tools, you can run
-			--    :Mason
-			--
-			-- You can press `g?` for help in this menu.
-			--
-			-- `mason` had to be setup earlier: to configure its options see the
-			-- `dependencies` table for `nvim-lspconfig` above.
-			--
-			-- You can add other tools here that you want Mason to install
-			-- for you, so that they are available from within Neovim.
-			local ensure_installed = vim.tbl_keys(servers or {})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-				automatic_installation = false,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
-						-- server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
 		end,
+	},
+
+	{ -- Autocompletion
+		"saghen/blink.cmp",
+		event = "VimEnter",
+		version = "1.*",
+		--- @module 'blink.cmp'
+		--- @type blink.cmp.Config
+		opts = {
+			keymap = {
+				preset = "default",
+			},
+
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+
+			completion = {
+				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+			},
+
+			sources = {
+				default = { "lsp", "buffer", "snippets", "path", "omni" },
+
+				providers = {
+					lsp = {
+						enabled = true,
+					},
+				},
+			},
+
+			-- By default, we use the Lua implementation instead, but you may enable
+			-- the rust implementation via `'prefer_rust_with_warning'`
+			--
+			-- See :h blink-cmp-config-fuzzy for more information
+			fuzzy = { implementation = "lua" },
+
+			-- Shows a signature help window while you type arguments for a function
+			signature = { enabled = true },
+		},
 	},
 
 	{ -- Autoformat
@@ -471,38 +489,6 @@ require("lazy").setup({
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
-	},
-
-	{ -- Autocompletion
-		"saghen/blink.cmp",
-		event = "VimEnter",
-		version = "1.*",
-		--- @module 'blink.cmp'
-		--- @type blink.cmp.Config
-		opts = {
-			keymap = {
-				preset = "default",
-			},
-
-			-- Default list of enabled providers defined so that you can extend it
-			-- elsewhere in your config, without redefining it, due to `opts_extend`
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
-
-			-- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-			-- which automatically downloads a prebuilt binary when enabled.
-			--
-			-- By default, we use the Lua implementation instead, but you may enable
-			-- the rust implementation via `'prefer_rust_with_warning'`
-			--
-			-- See :h blink-cmp-config-fuzzy for more information
-			fuzzy = { implementation = "lua" },
-
-			-- Shows a signature help window while you type arguments for a function
-			signature = { enabled = true },
-		},
-		opts_extend = { "sources.default" },
 	},
 
 	{ -- You can easily change to a different colorscheme.
