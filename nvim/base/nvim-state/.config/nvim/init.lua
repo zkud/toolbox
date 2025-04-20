@@ -279,40 +279,44 @@ require("lazy").setup({
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("grn", vim.lsp.buf.rename, " rename the symbol under cursor")
+					map("<leader>ln", vim.lsp.buf.rename, " rename the symbol under cursor")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
-					map("gra", vim.lsp.buf.code_action, " goto code action", { "n", "x" })
+					map("<leader>la", vim.lsp.buf.code_action, " goto code action", { "n", "x" })
 
 					-- Find references for the word under your cursor.
-					map("grr", require("telescope.builtin").lsp_references, " goto references")
+					map("<leader>lr", require("telescope.builtin").lsp_references, " goto references")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gri", require("telescope.builtin").lsp_implementations, " goto implementation")
+					map("<leader>li", require("telescope.builtin").lsp_implementations, " goto implementation")
 
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
-					map("grd", require("telescope.builtin").lsp_definitions, " goto definition")
+					map("gd", require("telescope.builtin").lsp_definitions, " goto definition")
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
-					map("grD", vim.lsp.buf.declaration, " goto declaration")
+					map("gD", vim.lsp.buf.declaration, " goto declaration")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("gO", require("telescope.builtin").lsp_document_symbols, " open document symbols")
+					map("<leader>lO", require("telescope.builtin").lsp_document_symbols, " open document symbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
-					map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, " open workspace symbols")
+					map(
+						"<leader>lW",
+						require("telescope.builtin").lsp_dynamic_workspace_symbols,
+						" open workspace symbols"
+					)
 
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("grt", require("telescope.builtin").lsp_type_definitions, " goto type definition")
+					map("<leader>lT", require("telescope.builtin").lsp_type_definitions, " goto type definition")
 
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client
@@ -372,9 +376,9 @@ require("lazy").setup({
 						client
 						and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 					then
-						map("<leader>]h", function()
+						map("<leader>lh", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-						end, "Toggle Inlay Hints")
+						end, "LSP: toggle inlay hints")
 					end
 				end,
 			})
