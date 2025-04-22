@@ -22,7 +22,7 @@ git diff $BASE_BRANCH --name-only > "$temp_file"
 # Iterate through the file names
 while IFS= read -r filename; do 
   # Extract the content of the file using git show
-  echo "//////////////////////////////////// REVIEW $filename"
+  echo "# REVIEW for $filename"
   # Build ollama payload to generate code review
   jq -n \
     --arg model "$OLLAMA_MODEL" \
@@ -30,7 +30,9 @@ while IFS= read -r filename; do
     --arg stream false \
     --arg prompt "$REVIEW_PROMPT File diff: $(git diff $BASE_BRANCH -p --raw -- "$filename")" \
     '{model: $model, raw: $raw | test("true"), stream: $stream | test("true"), prompt: $prompt}' > diff.json
-  curl --max-time $CURL_MAX_RESPONSE_TIME \
+  curl \
+    --silent \
+    --max-time $CURL_MAX_RESPONSE_TIME \
     --location "$OLLAMA_HOST/api/generate" \
     -H "content-type: application/json" \
     --data-binary @diff.json | jq -r '.response'
