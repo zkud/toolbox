@@ -30,12 +30,12 @@ Basic aider with ollama configs, it's an AI assistant to streamline productivity
 
 - nvim
 
-Dockerized nvim + NvChad build for some basic editing. State is fully cached.
-
-- nvim2
-
-Dockerized nvim + custom config build for some basic editing. See nvim/base2/nvim-state/.config/nvim/init.lua for details.
+Dockerized nvim + custom configs for some basic editing.
 
 - nvim-rust
 
-nvim + rust plugins build for some the rust development.
+nvim + custom configs + rust plugins build for some the rust development.
+
+- ollama-review
+
+Pr review automation with local ollama api, see ollama/review/run.sh
