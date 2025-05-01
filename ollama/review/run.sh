@@ -1,7 +1,7 @@
 # Variables
 
 OLLAMA_HOST="http://192.168.2.2:11434"
-OLLAMA_MODEL="gemma3:12b"
+OLLAMA_MODEL="qwen2.5-coder-14b-100k-window:latest"
 BASE_BRANCH=main
 
 REVIEW_PROMPT='
@@ -11,7 +11,7 @@ REVIEW_PROMPT='
   Structure your output by summary + bullet points.
 '
 
-CURL_MAX_RESPONSE_TIME=120
+CURL_MAX_RESPONSE_TIME=300 # 5 minutes
 
 # Create a temporary file to store the file names 
 temp_file=$(mktemp)
