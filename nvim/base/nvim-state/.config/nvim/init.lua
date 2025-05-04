@@ -227,6 +227,7 @@ require("lazy").setup({
 			local servers = {
 				"lua-language-server",
 				"stylua",
+				"rust-analyzer",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = servers })
 		end,
@@ -250,6 +251,7 @@ require("lazy").setup({
 			servers = {
 				lua_ls = {},
 				stylua = {},
+				rust_analyzer = {},
 			},
 		},
 		config = function(_, opts)
@@ -583,15 +585,14 @@ require("lazy").setup({
 	-- Nvim tree config
 	{
 		"nvim-tree/nvim-tree.lua",
-		lazy = false,
 		keys = {
-			{ "<leader>t", "<cmd>NvimTreeFocus<CR>", desc = "nvim-tree: focus window" },
+			{ "<leader>t", "<cmd>NvimTreeToggle<CR>", desc = "nvim-tree: toggle window" },
 		},
-		config = function()
-			require("nvim-tree").setup({})
-			-- Always open at startup
-			require("nvim-tree.api").tree.open()
-		end,
+		opts = {
+			view = {
+				side = "right",
+			},
+		},
 	},
 }, {
 	ui = {
