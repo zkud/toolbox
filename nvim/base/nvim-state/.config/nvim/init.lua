@@ -227,7 +227,6 @@ require("lazy").setup({
 			local servers = {
 				"lua-language-server",
 				"stylua",
-				"rust-analyzer",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = servers })
 		end,
@@ -251,7 +250,6 @@ require("lazy").setup({
 			servers = {
 				lua_ls = {},
 				stylua = {},
-				rust_analyzer = {},
 			},
 		},
 		config = function(_, opts)
