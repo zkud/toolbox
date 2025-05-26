@@ -1,14 +1,12 @@
 # Variables
 
 OLLAMA_HOST="http://192.168.2.2:11434"
-OLLAMA_MODEL="qwen2.5-coder-14b-100k-window:latest"
+OLLAMA_MODEL="qwen3:8b"
 BASE_BRANCH=main
 
 REVIEW_PROMPT='
-  Review the file pr changes if you are an architect.
-  WRITE IT SHORT.
-  REACT ONLY IF THERE IS AN ISSUE (potential bug or code smells)  
-  Structure your output by summary + bullet points.
+  You have a git diff for some file.
+  Search for obvious bugs, defects, inoptimal solutions, inconsitencies in code.
 '
 
 CURL_MAX_RESPONSE_TIME=300 # 5 minutes
@@ -29,13 +27,14 @@ while IFS= read -r filename; do
     --arg raw true \
     --arg stream false \
     --arg prompt "$REVIEW_PROMPT File diff: $(git diff $BASE_BRANCH -p --raw -- "$filename")" \
-    '{model: $model, raw: $raw | test("true"), stream: $stream | test("true"), prompt: $prompt}' > diff.json
+    --arg format '{"type":"array","description":"list of found issues","items":{"type":"object","description":"issue object","properties":{"shortSummary":{"type":"string"},"codeReference":{"type":"string"}}}}'\
+    '{model: $model, raw: $raw | test("true"), stream: $stream | test("true"), prompt: $prompt, format: $format|fromjson}' > diff.json
   curl \
     --silent \
     --max-time $CURL_MAX_RESPONSE_TIME \
     --location "$OLLAMA_HOST/api/generate" \
     -H "content-type: application/json" \
-    --data-binary @diff.json | jq -r '.response'
+    --data-binary @diff.json | jq -r ".response"
   sleep 1 # cooldown to avoid DOS of the ollama
 done < "$temp_file" 
   
