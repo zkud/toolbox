@@ -6,3 +6,4 @@ readonly NVIM_BASE_USER_ID=$(id -u) # Current User's ID
 readonly NVIM_BASE_GROUP_ID=$(id -g) # Current User's Group ID
 
 readonly NVIM_RUST_IMAGE_NAME="toolbox-nvim-rust"
+readonly NVIM_LUA_IMAGE_NAME="toolbox-nvim-lua"

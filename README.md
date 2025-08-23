@@ -28,13 +28,9 @@ Since all deps are here, to install the toolbox, simply run the `install.sh` scr
 
 Basic aider with ollama configs, it's an AI assistant to streamline productivity.
 
-- nvim
+- nvim, nvim-lua, nvim-rust
 
-Dockerized nvim + custom configs for some basic editing.
-
-- nvim-rust
-
-nvim + custom configs + rust plugins build for some the rust development.
+Dockerized nvim + custom configs for some basic editing + depencies for development.
 
 - ollama-review
 
