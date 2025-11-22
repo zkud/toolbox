@@ -20,6 +20,7 @@ echo "Installing scripts"
 sh "$HOME/.toolbox/nvim/base/install.sh"
 sh "$HOME/.toolbox/nvim/lua/install.sh"
 sh "$HOME/.toolbox/nvim/rust/install.sh"
+sh "$HOME/.toolbox/nvim/c/install.sh"
 sh "$HOME/.toolbox/nvim/python/install.sh"
 
 if [ -f "$HOME/.bashrc" ]; then
@@ -31,6 +32,8 @@ else
 fi
 echo "Adding nvim-rust alias to .bashrc..."
 echo "alias nvim-rust='~/.toolbox/nvim/rust/run.sh'" >> "$HOME/.bashrc"
+echo "Adding nvim-c alias to .bashrc..."
+echo "alias nvim-c='~/.toolbox/nvim/c/run.sh'" >> "$HOME/.bashrc"
 echo "Adding nvim-lua alias to .bashrc..."
 echo "alias nvim-lua='~/.toolbox/nvim/lua/run.sh'" >> "$HOME/.bashrc"
 echo "Adding nvim-python alias to .bashrc..."
