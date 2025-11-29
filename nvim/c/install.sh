@@ -1,6 +1,9 @@
 #!/bin/bash
 
 . $HOME/.toolbox/nvim/constants.sh
+. $HOME/.toolbox/nvim/utils.sh
+
+copy_nvim_initial_config_to_home_cache $HOME/.toolbox/nvim/c
 
 docker build -t $NVIM_C_IMAGE_NAME \
   --build-arg USER_NAME=$NVIM_BASE_USER_NAME \

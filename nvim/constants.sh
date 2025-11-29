@@ -1,3 +1,5 @@
+#!/bin/bash
+
 readonly NVIM_BASE_IMAGE_NAME="toolbox-nvim-base"
 readonly NVIM_BASE2_IMAGE_NAME="toolbox-nvim-base2"
 readonly NVIM_BASE_USER_NAME=zkud

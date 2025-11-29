@@ -4,7 +4,7 @@
 
 docker run --volume $(pwd):/app \
   --user $NVIM_BASE_USER_NAME \
-  --volume ~/.toolbox/nvim/c/nvim-state/.config/nvim:/home/$NVIM_BASE_USER_NAME/.config/nvim \
+  --volume ~/.toolbox/nvim/c/home:/home/$NVIM_BASE_USER_NAME \
   -w /app \
   --rm \
   -it $NVIM_C_IMAGE_NAME sh -uelic "nvim $@"
