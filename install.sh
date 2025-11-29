@@ -17,11 +17,11 @@ echo "Copying toolbox files to ~/.toolbox..."
 cp -r . "$HOME/.toolbox"
 
 echo "Installing scripts"
+custom_profiles=("c" "c-beep" "lua" "python" "rust")
 sh "$HOME/.toolbox/nvim/profiles/base/install.sh"
-sh "$HOME/.toolbox/nvim/profiles/lua/install.sh"
-sh "$HOME/.toolbox/nvim/profiles/rust/install.sh"
-sh "$HOME/.toolbox/nvim/profiles/c/install.sh"
-sh "$HOME/.toolbox/nvim/profiles/python/install.sh"
+for profile in "${custom_profiles[@]}"; do
+	sh "$HOME/.toolbox/nvim/profiles/$profile/install.sh"
+done
 
 if [ -f "$HOME/.bashrc" ]; then
  echo "Adding nvim alias to .bashrc..."
@@ -30,16 +30,13 @@ else
  echo "Creating .bashrc and adding nvim alias..."
  echo "alias nvim='~/.toolbox/nvim/profiles/base/run.sh'" > "$HOME/.bashrc"
 fi
-echo "Adding nvim-rust alias to .bashrc..."
-echo "alias nvim-rust='~/.toolbox/nvim/profiles/rust/run.sh'" >> "$HOME/.bashrc"
-echo "Adding nvim-c alias to .bashrc..."
-echo "alias nvim-c='~/.toolbox/nvim/profiles/c/run.sh'" >> "$HOME/.bashrc"
-echo "Adding nvim-lua alias to .bashrc..."
-echo "alias nvim-lua='~/.toolbox/nvim/profiles/lua/run.sh'" >> "$HOME/.bashrc"
-echo "Adding nvim-python alias to .bashrc..."
-echo "alias nvim-python='~/.toolbox/nvim/profiles/python/run.sh'" >> "$HOME/.bashrc"
+for profile in "${custom_profiles[@]}"; do
+	echo "Adding nvim-$profile alias to .bashrc..."
+	echo "alias nvim-$profile='~/.toolbox/nvim/profiles/$profile/run.sh'" >> "$HOME/.bashrc"
+done
 echo "Adding aider alias to .bashrc..."
 echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
+echo "Adding ollama-review alias to .bashrc..."
 echo "alias ollama-review='~/.toolbox/ollama/review/run.sh'" >> "$HOME/.bashrc"
 
 echo "Toolbox installed/upgraded successfully!"
