@@ -34,6 +34,20 @@ module.setup = function(mason_servers, lsp_servers)
 	-- Enable break indent
 	vim.opt.breakindent = true
 
+	-- Set tabstop to 4 spaces (how many spaces a <Tab> character consumes)
+	vim.opt.tabstop = 4
+
+	-- Set shiftwidth to 4 spaces (how many spaces are used for auto-indentation)
+	vim.opt.shiftwidth = 4
+
+	-- Set expandtab to true to convert tabs to spaces
+	vim.opt.expandtab = true
+
+	-- Set softtabstop to 4 spaces (how many spaces a <Tab> keypress inserts)
+	-- When set to 0, it defaults to 'shiftwidth'. A value of -1 makes it behave
+	-- like 'tabstop' when inserting, and 'shiftwidth' when deleting.
+	vim.opt.softtabstop = 4
+
 	-- Save undo history
 	vim.opt.undofile = true
 
