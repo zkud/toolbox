@@ -17,7 +17,7 @@ echo "Copying toolbox files to ~/.toolbox..."
 cp -r . "$HOME/.toolbox"
 
 echo "Installing scripts"
-custom_profiles=("c" "c-beep" "lua" "python" "rust")
+custom_profiles=("c" "c-beep" "lua" "python" "rust" "sap-cap-java")
 sh "$HOME/.toolbox/nvim/profiles/base/install.sh"
 for profile in "${custom_profiles[@]}"; do
 	sh "$HOME/.toolbox/nvim/profiles/$profile/install.sh"

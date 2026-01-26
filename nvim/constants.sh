@@ -1,7 +1,6 @@
 #!/bin/bash
 
 readonly NVIM_BASE_IMAGE_NAME="toolbox-nvim-base"
-readonly NVIM_BASE2_IMAGE_NAME="toolbox-nvim-base2"
 readonly NVIM_BASE_USER_NAME=zkud
 readonly NVIM_BASE_GROUP_NAME=chads
 readonly NVIM_BASE_USER_ID=$(id -u) # Current User's ID
@@ -12,3 +11,4 @@ readonly NVIM_C_IMAGE_NAME="toolbox-nvim-c"
 readonly NVIM_C_BEEP_IMAGE_NAME="toolbox-nvim-c-beep"
 readonly NVIM_PYTHON_IMAGE_NAME="toolbox-nvim-python"
 readonly NVIM_LUA_IMAGE_NAME="toolbox-nvim-lua"
+readonly NVIM_SAP_CAP_JAVA_IMAGE_NAME="toolbox-nvim-sap-cap-java"
