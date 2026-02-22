@@ -17,6 +17,7 @@ echo "Copying toolbox files to ~/.toolbox..."
 cp -r . "$HOME/.toolbox"
 
 echo "Installing scripts"
+sh "$HOME/.toolbox/opencode/install.sh"
 custom_profiles=("c" "c-beep" "lua" "python" "rust" "sap-cap-java")
 sh "$HOME/.toolbox/nvim/profiles/base/install.sh"
 for profile in "${custom_profiles[@]}"; do
@@ -38,6 +39,8 @@ echo "Adding aider alias to .bashrc..."
 echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 echo "Adding ollama-review alias to .bashrc..."
 echo "alias ollama-review='~/.toolbox/ollama/review/run.sh'" >> "$HOME/.bashrc"
+echo "Adding opencode alias to .bashrc..."
+echo "alias opencode='~/.toolbox/opencode/run.sh'" >> "$HOME/.bashrc"
 
 echo "Toolbox installed/upgraded successfully!"
 echo "Remember to open a new terminal or run 'source ~/.bashrc' to use the new command."
