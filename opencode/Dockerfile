@@ -1,5 +1,7 @@
 FROM node:lts-alpine3.22
 
+RUN apk add git lazygit fzf curl ripgrep bash --update
+
 USER node
 
 RUN npm config set prefix ~/.local
