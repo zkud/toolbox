@@ -13,6 +13,45 @@
         }
       }
     }
+  },
+  "agent": {
+    "developer": {
+      "mode": "primary",
+      "model": "ollama/nemotron-3-nano",
+      "prompt": "{file:~/prompts/developer.md}",
+      "tools": {
+        "bash": true,
+        "write": true,
+        "edit": true,
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "list": true,
+        "lsp": true,
+        "skill": false,
+        "patch": true,
+        "todowrite": true,
+        "todoread": true,
+        "webfetch": true,
+        "websearch": false,
+        "question": true
+      },
+      "permissions": {
+        "bash": "allow",
+        "write": "allow",
+        "edit": "allow",
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "patch": "allow",
+        "todowrite": "allow",
+        "todoread": "allow",
+        "webfetch": "allow",
+        "question": "allow"
+      }
+    }
   }
 }
 
