@@ -10,6 +10,18 @@
       "models": {
         "nemotron-3-nano": {
           "name": "nemotron-3-nano hosted locally"
+        },
+        "qwen3.5:9b": {
+          "name": "qwen3.5:9b hosted locally"
+        },
+        "qwen3.5:27b": {
+          "name": "qwen3.5:27b hosted locally"
+        },
+        "gpt-oss:20b": {
+          "name": "gpt-oss:20b hosted locally"
+        },
+        "gemma4:e4b": {
+          "name": "gemma4:e4b minimal model hosted locally"
         }
       }
     }
@@ -17,7 +29,7 @@
   "agent": {
     "developer": {
       "mode": "primary",
-      "model": "ollama/nemotron-3-nano",
+      "model": "ollama/gemma4:e4b",
       "prompt": "{file:~/prompts/developer.md}",
       "tools": {
         "bash": true,
