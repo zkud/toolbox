@@ -1,0 +1,8 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    # recursively searches for outdated versions in Dockerfile 
+    directory: "/**"
+    schedule:
+      interval: "daily"
+
