@@ -5,7 +5,7 @@
 
 copy_nvim_initial_config_to_home_cache $HOME/.toolbox/nvim/profiles/lua
 
-docker build --pull -t $NVIM_LUA_IMAGE_NAME \
+docker build -t $NVIM_LUA_IMAGE_NAME \
   --build-arg USER_NAME=$NVIM_BASE_USER_NAME \
   --build-arg GROUP_NAME=$NVIM_BASE_GROUP_NAME \
   --build-arg USER_ID=$NVIM_BASE_USER_ID \
