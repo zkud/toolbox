@@ -1,10 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
-    # recursively searches for outdated versions in Dockerfile 
     directories:
       - "/nvim/profiles/base/*"
       - "/opencode/*"
     schedule:
       interval: "daily"
 
+  - package-ecosystem: "npm"
+    directories:
+      - "/opencode"
+    schedule:
+      interval: "daily"
