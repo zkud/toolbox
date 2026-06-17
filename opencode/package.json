@@ -1,6 +1,6 @@
 {
   "name": "opencode-agent",
   "dependencies": {
-    "opencode-ai": "1.2.0"
+    "opencode-ai": "1.17.7"
   }
 }
