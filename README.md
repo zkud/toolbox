@@ -35,3 +35,7 @@ Dockerized nvim + custom configs for some basic editing + dependencies for devel
 - ollama-review
 
 Pr review automation with local ollama api, see ollama/review/run.sh
+
+- vim 
+
+Dockerized vim + custom configs + deps for development.
