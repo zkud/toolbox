@@ -23,6 +23,7 @@ sh "$HOME/.toolbox/nvim/profiles/base/install.sh"
 for profile in "${custom_profiles[@]}"; do
 	sh "$HOME/.toolbox/nvim/profiles/$profile/install.sh"
 done
+sh "$HOME/.toolbox/vim/install.sh"
 
 if [ -f "$HOME/.bashrc" ]; then
  echo "Adding nvim alias to .bashrc..."
@@ -41,6 +42,8 @@ echo "Adding ollama-review alias to .bashrc..."
 echo "alias ollama-review='~/.toolbox/ollama/review/run.sh'" >> "$HOME/.bashrc"
 echo "Adding opencode alias to .bashrc..."
 echo "alias opencode='~/.toolbox/opencode/run.sh'" >> "$HOME/.bashrc"
+echo "Adding vim alias to .bashrc..."
+echo "alias vim='~/.toolbox/vim/run.sh'" >> "$HOME/.bashrc"
 
 echo "Toolbox installed/upgraded successfully!"
 echo "Remember to open a new terminal or run 'source ~/.bashrc' to use the new command."

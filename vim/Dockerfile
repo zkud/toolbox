@@ -1,0 +1,12 @@
+FROM alpine:3.24.1
+
+ARG USER_NAME
+ARG GROUP_NAME
+ARG USER_ID
+ARG USER_GROUP_ID
+
+# Add non-root user
+RUN addgroup -g ${USER_GROUP_ID} -S ${GROUP_NAME}
+RUN adduser -D -u ${USER_ID} -G ${GROUP_NAME} ${USER_NAME}
+
+RUN apk add git vim bash --update
