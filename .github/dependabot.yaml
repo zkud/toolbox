@@ -3,6 +3,7 @@ updates:
   - package-ecosystem: "docker"
     directories:
       - "/nvim/profiles/base/*"
+      - "/vim/*"
       - "/opencode/*"
     schedule:
       interval: "daily"
