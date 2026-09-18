@@ -14,6 +14,9 @@
         "gemma4:26b": {
           "name": "gemma4 primary powerhorse"
         },
+        "qwen3.6:35b": {
+          "name": "primary powerhorse"
+        },
         "gemma4:e4b": {
           "name": "gemma4:e4b minimal model hosted locally for fast generation"
         }
@@ -23,7 +26,7 @@
   "agent": {
     "developer": {
       "mode": "primary",
-      "model": "ollama/gemma4:26b",
+      "model": "ollama/qwen3.6:35b",
       "prompt": "{file:~/prompts/developer.md}",
       "tools": {
         "bash": true,
