@@ -10,7 +10,7 @@ RUN addgroup -g ${USER_GROUP_ID} -S ${GROUP_NAME}
 RUN adduser -D -u ${USER_ID} -G ${GROUP_NAME} ${USER_NAME}
 
 # Install depedencies
-RUN apk add git vim bash curl --update
+RUN apk add git vim bash curl ripgrep --update
 
 # Install vim plug
 RUN curl -fLo /home/${USER_NAME}/.vim/autoload/plug.vim --create-dirs \

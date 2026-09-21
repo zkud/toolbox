@@ -8,3 +8,5 @@ docker run --volume $(pwd):/app \
   -w /app \
   --rm \
   -it $VIM_IMAGE_NAME sh -uelic "vim $@"
+
+clear # to clear the mess after vim
