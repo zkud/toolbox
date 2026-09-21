@@ -6,21 +6,9 @@ This monorepo contains a collection of CLI tools for development, each tool is *
 
 If you'd like to reuse the repo, please note currently Windows is **NOT** supported. And it won't be in forseeable future as I don't use it for development at all.
 
-Dependencies:
+The only single dependency you need to start is Docker.
 
-- Docker.
-
-- Nerdfonts. It depends on distro/OS how to use install it. On ubuntu the next command will do
-
-```
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
-    && cd ~/.local/share/fonts \
-    && unzip JetBrainsMono.zip \
-    && rm JetBrainsMono.zip \
-    && fc-cache -fv
-```
-
-Since all deps are here, to install the toolbox, simply run the `install.sh` script.
+To install the toolbox, simply run the `install.sh` script.
 
 ## Tools Overview
 
@@ -28,13 +16,13 @@ Since all deps are here, to install the toolbox, simply run the `install.sh` scr
 
 Basic aider with ollama configs, it's an AI assistant to streamline productivity.
 
-- nvim, nvim-lua, nvim-rust, nvim-python
-
-Dockerized nvim + custom configs for some basic editing + dependencies for development.
-
 - ollama-review
 
-Pr review automation with local ollama api, see ollama/review/run.sh
+Pr review automation with local ollama api, see ollama/review/run.sh.
+
+- opencode
+
+Sandboxed opencode with preconfigured agents and model providers.
 
 - vim 
 

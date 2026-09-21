@@ -18,26 +18,15 @@ cp -r . "$HOME/.toolbox"
 
 echo "Installing scripts"
 sh "$HOME/.toolbox/opencode/install.sh"
-custom_profiles=("c" "c-beep" "lua" "python" "rust" "sap-cap-java")
-sh "$HOME/.toolbox/nvim/profiles/base/install.sh"
-for profile in "${custom_profiles[@]}"; do
-	sh "$HOME/.toolbox/nvim/profiles/$profile/install.sh"
-done
 sh "$HOME/.toolbox/vim/install.sh"
 
 if [ -f "$HOME/.bashrc" ]; then
- echo "Adding nvim alias to .bashrc..."
- echo "alias nvim='~/.toolbox/nvim/profiles/base/run.sh'" >> "$HOME/.bashrc"
+ echo "Adding aider alias to .bashrc..."
+ echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 else
- echo "Creating .bashrc and adding nvim alias..."
- echo "alias nvim='~/.toolbox/nvim/profiles/base/run.sh'" > "$HOME/.bashrc"
+ echo "Creating .bashrc and adding aider alias..."
+ echo "alias aider='~/.toolbox/aider/run.sh'" > "$HOME/.bashrc"
 fi
-for profile in "${custom_profiles[@]}"; do
-	echo "Adding nvim-$profile alias to .bashrc..."
-	echo "alias nvim-$profile='~/.toolbox/nvim/profiles/$profile/run.sh'" >> "$HOME/.bashrc"
-done
-echo "Adding aider alias to .bashrc..."
-echo "alias aider='~/.toolbox/aider/run.sh'" >> "$HOME/.bashrc"
 echo "Adding ollama-review alias to .bashrc..."
 echo "alias ollama-review='~/.toolbox/ollama/review/run.sh'" >> "$HOME/.bashrc"
 echo "Adding opencode alias to .bashrc..."
