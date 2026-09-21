@@ -9,4 +9,16 @@ ARG USER_GROUP_ID
 RUN addgroup -g ${USER_GROUP_ID} -S ${GROUP_NAME}
 RUN adduser -D -u ${USER_ID} -G ${GROUP_NAME} ${USER_NAME}
 
-RUN apk add git vim bash --update
+# Install depedencies
+RUN apk add git vim bash curl --update
+
+# Install vim plug
+RUN curl -fLo /home/${USER_NAME}/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Copy vim config
+COPY ./.vimrc /home/${USER_NAME}/.vimrc
+
+# Fix permission issues
+RUN chown -R ${USER_NAME} /home/${USER_NAME}/.vim/
+RUN chown ${USER_NAME} /home/${USER_NAME}/.vimrc
