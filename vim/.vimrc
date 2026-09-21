@@ -8,6 +8,10 @@ Plug 'sainnhe/everforest'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Filetree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 
 " Automatically install missing plugins on startup
@@ -47,4 +51,8 @@ nnoremap <C-k> <C-w><C-k>
 """ Fuzzy search
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :Rg<CR>
+
+""" File tree
+nnoremap <leader>t :NERDTreeFocus<CR>
+let g:NERDTreeWinPos = "right"
 
