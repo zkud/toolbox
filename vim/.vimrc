@@ -42,14 +42,14 @@ set shiftwidth=4
 set expandtab
 
 """ Window management
-" Move focus to the left window
 nnoremap <C-h> <C-w><C-h>
-" Move focus to the right window
 nnoremap <C-l> <C-w><C-l>
-" Move focus to the lower window
 nnoremap <C-j> <C-w><C-j>
-" Move focus to the upper window
 nnoremap <C-k> <C-w><C-k>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 """ Fuzzy search
 nnoremap <leader>f :Files<CR>
@@ -63,3 +63,4 @@ let g:NERDTreeWinPos = "right"
 set statusline^=%{coc#status()}
 nmap <leader>lr <Plug>(coc-rename)
 let g:coc_global_extensions = ['coc-pyright']
+set updatetime=300

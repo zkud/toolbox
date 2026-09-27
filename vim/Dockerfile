@@ -22,3 +22,6 @@ COPY ./.vimrc /home/${USER_NAME}/.vimrc
 # Fix permission issues
 RUN chown -R ${USER_NAME} /home/${USER_NAME}/.vim/
 RUN chown ${USER_NAME} /home/${USER_NAME}/.vimrc
+
+# Install dev deps
+RUN apk add --no-cache python3 py3-pip
