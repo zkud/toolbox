@@ -12,6 +12,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" LSP support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 " Automatically install missing plugins on startup
@@ -56,3 +59,7 @@ nnoremap <leader>g :Rg<CR>
 nnoremap <leader>t :NERDTreeFocus<CR>
 let g:NERDTreeWinPos = "right"
 
+""" LSP
+set statusline^=%{coc#status()}
+nmap <leader>lr <Plug>(coc-rename)
+let g:coc_global_extensions = ['coc-pyright']

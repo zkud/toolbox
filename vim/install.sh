@@ -3,6 +3,7 @@
 . $HOME/.toolbox/vim/constants.sh
 
 mkdir ~/.toolbox/vim/deps # cache for vim dependencies
+mkdir ~/.toolbox/vim/config # cache for coc lsps
 
 docker build --pull -t $VIM_IMAGE_NAME \
   --build-arg USER_NAME=$VIM_USER_NAME \
